@@ -7,12 +7,12 @@ namespace pokesharp {
     class PokemonUtils {
 
         public static Pokemon createPokemonObject(dynamic pokemonJson, dynamic pokemonSpeciesJson) {
-            string name = pokemonJson.name;
+            string name = capitalizeFirstLetter((string)pokemonJson.name);
             decimal weight = pokemonJson.weight;
             decimal height = pokemonJson.height;
             List<dynamic> typesObj = getListFromJArray(pokemonJson.types);
             List<dynamic> flavorsObj = getListFromJArray(pokemonSpeciesJson["flavor_text_entries"]);
-            string[] types = typesObj.Select(type => (string)type.type.name).Cast<string>().ToArray();
+            string[] types = typesObj.Select(type => capitalizeFirstLetter((string)type.type.name)).Cast<string>().ToArray();
             string description = getDescription(flavorsObj);
 
             return new Pokemon(name, weight, height, types, description);
@@ -26,6 +26,14 @@ namespace pokesharp {
 
         private static List<dynamic> getListFromJArray(JArray arr) {
             return arr.ToObject<List<dynamic>>();
+        }
+
+        private static String capitalizeFirstLetter(string s) {
+            if (string.IsNullOrEmpty(s)) return string.Empty;
+
+            char[] a = s.ToCharArray();
+            a[0] = char.ToUpper(a[0]);
+            return new string(a);
         }
     }
 }
