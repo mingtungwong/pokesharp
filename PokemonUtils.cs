@@ -8,8 +8,11 @@ namespace pokesharp {
 
         public static Pokemon createPokemonObject(dynamic pokemonJson, dynamic pokemonSpeciesJson) {
             string name = capitalizeFirstLetter((string)pokemonJson.name);
-            decimal weight = pokemonJson.weight;
-            decimal height = pokemonJson.height;
+            
+            // Account for fact that weight and height are 10x larger
+            decimal weight = pokemonJson.weight / 10.0M;
+            decimal height = pokemonJson.height / 10.0M;
+            
             List<dynamic> typesObj = getListFromJArray(pokemonJson.types);
             List<dynamic> flavorsObj = getListFromJArray(pokemonSpeciesJson["flavor_text_entries"]);
             string[] types = typesObj.Select(type => capitalizeFirstLetter((string)type.type.name)).Cast<string>().ToArray();
