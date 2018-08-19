@@ -17,14 +17,14 @@ namespace pokesharp {
         }
 
         public void printPokedexEntry() {
-            Console.WriteLine("~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~");
+            Console.WriteLine("\n~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~");
             Console.WriteLine($"{Name}");
             Console.WriteLine($"WT: {Weight} kg\tHT: {Height} m");
             Console.WriteLine($"Type(s): {String.Join(", ", Types)}");
             Console.WriteLine("-------------------------------------");
             Console.WriteLine($"{Description}");
             Console.WriteLine();
-            Console.WriteLine("~*~*~*~*~*~*~*~*~*~*~**~*~*~*~*~*~*~*~");
+            Console.WriteLine("~*~*~*~*~*~*~*~*~*~*~**~*~*~*~*~*~*~*~\n");
         }
     }
 }
