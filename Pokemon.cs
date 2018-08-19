@@ -15,5 +15,16 @@ namespace pokesharp {
             Types = types;
             Description = description;
         }
+
+        public void printPokedexEntry() {
+            Console.WriteLine("~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~");
+            Console.WriteLine($"{Name}");
+            Console.WriteLine($"WT: {Weight}\tHT: {Height}");
+            Console.WriteLine($"Type(s): {String.Join(", ", Types)}");
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine($"{Description}");
+            Console.WriteLine();
+            Console.WriteLine("~*~*~*~*~*~*~*~*~*~*~**~*~*~*~*~*~*~*~");
+        }
     }
 }
