@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace pokesharp {
     class Pokemon {
@@ -18,13 +19,19 @@ namespace pokesharp {
 
         public void printPokedexEntry() {
             Console.WriteLine("\n~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~");
-            Console.WriteLine($"{Name}");
-            Console.WriteLine($"WT: {Weight} kg\tHT: {Height} m");
-            Console.WriteLine($"Type(s): {String.Join(", ", Types)}");
-            Console.WriteLine("-------------------------------------");
-            Console.WriteLine($"{Description}");
-            Console.WriteLine();
+            Console.WriteLine(this);
             Console.WriteLine("~*~*~*~*~*~*~*~*~*~*~**~*~*~*~*~*~*~*~\n");
+        }
+
+        public override string ToString() {
+            var builder = new StringBuilder();
+            builder.AppendFormat("{0}\n", Name);
+            builder.AppendFormat("WT: {0} kg\tHT: {1} m\n", Weight, Height);
+            builder.AppendFormat("Type(s): {0}\n", String.Join(", ", Types));
+            builder.Append("--------------------------------------------\n");
+            builder.AppendFormat("{0}\n", Description);
+
+            return builder.ToString();
         }
     }
 }
