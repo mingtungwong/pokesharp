@@ -18,7 +18,7 @@ namespace pokesharp {
         }
 
         public void printPokedexEntry() {
-            Console.WriteLine("\n~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~");
+            Console.WriteLine("\n~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~\n");
             Console.WriteLine(this);
             Console.WriteLine("~*~*~*~*~*~*~*~*~*~*~**~*~*~*~*~*~*~*~\n");
         }
