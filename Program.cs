@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net.Http;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
 namespace pokesharp
@@ -31,6 +31,7 @@ namespace pokesharp
                 doLoop = false;
                 return;
             }
+            choice = Regex.IsMatch(choice, @"^\d+$") ? choice : choice.ToLower(); 
             Pokemon p = client.getPokemon(choice);
             if(p == null) {
                 Console.WriteLine("Sorry, there was an error fetching the Pokemon. Your entry might have been incorrect. Please try again.");
