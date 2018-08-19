@@ -9,20 +9,10 @@ namespace pokesharp
     {
         static void Main(string[] args)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://pokeapi.co/api/v2/");
-            int pokemonId = 58;
-            HttpResponseMessage response = client.GetAsync($"pokemon/{pokemonId}").Result;
-            HttpResponseMessage response2 = client.GetAsync($"pokemon-species/{pokemonId}").Result;
-            if(response.IsSuccessStatusCode && response2.IsSuccessStatusCode) {
-                string respString = response.Content.ReadAsStringAsync().Result;
-                string respString2 = response2.Content.ReadAsStringAsync().Result;
-                dynamic json = JsonConvert.DeserializeObject<object>(respString);
-                dynamic json2 = JsonConvert.DeserializeObject<object>(respString2);
-                Pokemon p = PokemonUtils.createPokemonObject(json, json2);
-                Console.WriteLine(p.Name);
-                Console.WriteLine(p.Description);
-            } else Console.WriteLine("I got an error");
+            PokemonAPIClient client = new PokemonAPIClient();
+            Pokemon test = client.getPokemon("77");
+            Console.WriteLine(test.Name);
+            Console.WriteLine(test.Types[0]);
         }
     }
 }
