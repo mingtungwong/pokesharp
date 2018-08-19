@@ -15,18 +15,19 @@ namespace pokesharp
             while(doLoop) {
                 loop();
             }
-            Console.WriteLine("Thanks for using the app!");
+            Console.WriteLine("\nThanks for using the app!\n");
         }
 
         private static void showInstructions() {
-            Console.WriteLine("This console application calls the API at pokeapi.co to fetch Pokemon information.");
+            Console.WriteLine("\nThis console application calls the API at pokeapi.co to fetch Pokemon information.");
             Console.WriteLine("Enter a Pokemon ID number or name to get information for that Pokemon. Example: 8 or charmeleon.");
-            Console.WriteLine("Enter 'e' or 'exit' to exit.");
+            Console.WriteLine("Enter 'e' or 'exit' to exit.\n");
         }
 
         private static void loop() {
-            Console.Write("Enter your choice: ");
+            Console.Write("Enter your choice (ID or name, e or exit to close app): ");
             string choice = Console.ReadLine();
+            // TODO: Handle empty strings.
             if(choice == "e" || choice == "exit") {
                 doLoop = false;
                 return;
